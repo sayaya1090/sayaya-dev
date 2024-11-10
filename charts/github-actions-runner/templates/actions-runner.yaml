@@ -120,5 +120,5 @@ spec:
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
-  name: actions-runner
+  name: sayaya-actions-runner
   namespace: {{ .Release.Namespace }}
