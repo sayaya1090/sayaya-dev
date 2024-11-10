@@ -79,3 +79,4 @@ dependencyResolutionManagement {
         }
     }
 }
+include("activity")
