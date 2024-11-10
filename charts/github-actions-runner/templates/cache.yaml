@@ -8,6 +8,6 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: 7Gi
+      storage: 10Gi
   storageClassName: ocs-storagecluster-ceph-rbd
   volumeMode: Filesystem
