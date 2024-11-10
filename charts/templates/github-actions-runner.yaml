@@ -1,0 +1,22 @@
+{{- if eq .Release.Namespace "sayaya-test" }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: github-actions-runner
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: github-actions-runner
+    server: 'https://kubernetes.default.svc'
+  project: {{ .Release.Namespace }}
+  sources:
+    - path: charts/github-actions-runner
+      repoURL: 'https://github.com/sayaya1090/sayaya-dev.git'
+      targetRevision: HEAD
+  revisionHistoryLimit: 0
+  syncPolicy:
+    syncOptions:
+      - RespectIgnoreDifferences=true
+      - CreateNamespace=true
+      - ServerSideApply=true
+  {{- end }}
