@@ -1,7 +1,4 @@
-arc:
-  nameOverride: "arc"
-  fullnameOverride: "arc"
-ubi9:
+sayaya-ubi9:
   runnerScaleSetName: "sayaya-ubi9"
   githubConfigUrl: https://github.com/sayaya1090/sayaya-dev
   githubConfigSecret: github-secret
@@ -12,14 +9,14 @@ ubi9:
       serviceAccountName: arc
       initContainers:
         - name: init-dind-externals
-          image: image-registry.openshift-image-registry.svc:5000/github-actions-runner/actions-runner:latest
+          image: image-registry.openshift-image-registry.svc:5000/github-actions-runner/sayaya-actions-runner:latest
           command: [ "cp", "-r", "-v", "/home/runner/externals/.", "/home/runner/tmpDir/" ]
           volumeMounts:
             - name: dind-externals
               mountPath: /home/runner/tmpDir
       containers:
         - name: runner
-          image: image-registry.openshift-image-registry.svc:5000/github-actions-runner/actions-runner:latest
+          image: image-registry.openshift-image-registry.svc:5000/github-actions-runner/sayaya-actions-runner:latest
           command: [ "/home/runner/run.sh" ]
           securityContext:
             runAsUser: 1000
